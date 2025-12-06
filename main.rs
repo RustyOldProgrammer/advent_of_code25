@@ -8,6 +8,8 @@ fn main() {
         width: 20
         height:50
     } 
+    println!("rect: {:#?}", rect)
+    
     println!("The area of the rectangle is {} square pixels", 
     area(rect));
 
