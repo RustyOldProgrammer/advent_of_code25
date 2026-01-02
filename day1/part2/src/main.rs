@@ -3,6 +3,11 @@ struct Rectangle{
     width: u32,
     height: u32,
 }
+struct Triangle{
+    s1: u32,
+    s2: u32,
+    s3: u32, 
+}
 
 fn main() {
     let rect: Rectangle =  Rectangle{
