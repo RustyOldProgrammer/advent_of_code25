@@ -1,22 +1,26 @@
-#[derive(Debug)]
-struct Rectangle{
-    width: u32,
-    height: u32,
-}
+
+use rand::Rng;
+use std::env;
+
 
 fn main() {
-    let rect: Rectangle =  Rectangle{
-        width: 20, 
-        height:50
-    };
+    let length:usize = env::args()
+        .nth(1)
+        .unwrap_or("12".to_string())
+        .parse()
+        .unwrap();
 
-    println!("rect: {:#?}", rect);
-    
-    println!("The area of the Rectangle is {} square pixels", 
-    area(&rect));
 
-}
+    let charset = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-fn area(Rectangle: &Rectangle) -> u32{
-    Rectangle.width * Rectangle.height
+
+    let mut rng = rand::thread_rng();
+    let password:String = (0..length)
+        .map(|_|{
+            let index  = rng.gen_range(0..charset.len());
+            charset[index] as char
+        })
+        .collect();
+
+    println!("Generated {}", password);
 }
